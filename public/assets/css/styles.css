@@ -1,0 +1,16 @@
+#countdown-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#countdown-container span {
+    display: inline-block;
+    padding: 10px;
+    margin: 5px;
+    background-color: #333;
+    color: #fff;
+    border-radius: 5px;
+}

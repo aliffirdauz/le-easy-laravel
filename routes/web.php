@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Antrian;
+use App\Http\Controllers\AntrianController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $countAntrian = Antrian::count();
+    return view('index', compact('countAntrian'));
+})->name('index');
+
+Route::post('/antrian/store', [AntrianController::class, 'store'])->name('antrian.store');
