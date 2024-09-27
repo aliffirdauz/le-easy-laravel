@@ -36,9 +36,12 @@ class AntrianController extends Controller
             'kategori_bisnis' => 'required',
         ]);
 
-        Antrian::create($request->all());
-
-        return redirect()->route('index')->with('success', 'Terima kasih, data anda telah kami terima!');
+        $antrian = Antrian::create($request->all());
+        if($antrian) {
+            return redirect()->back()->with('success', 'Daftar berhasil, harap tunggu informasi menariknya!');
+        } else {
+            return redirect()->back()->with('error', 'Daftar gagal, silahkan coba lagi!');
+        }
     }
 
     /**

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 18px;
     font-weight: bold;
 }
 
@@ -13,4 +13,11 @@
     background-color: #333;
     color: #fff;
     border-radius: 5px;
+}
+
+.title-countdown {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }

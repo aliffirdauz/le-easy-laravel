@@ -2,6 +2,7 @@
 
 use App\Models\Antrian;
 use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +22,4 @@ Route::get('/', function () {
 })->name('index');
 
 Route::post('/antrian/store', [AntrianController::class, 'store'])->name('antrian.store');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');

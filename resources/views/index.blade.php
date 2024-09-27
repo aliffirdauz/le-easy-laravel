@@ -30,6 +30,9 @@
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/css/styles.css" />
+
+    @include('sweetalert::alert')
+
 </head>
 
 <body class="index-page">
@@ -84,6 +87,35 @@
                 </div>
             </div>
 
+            <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-2 mt-4 text-black" id="myModalLabel">Informasi Soft Launching !</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ asset('assets/img/Logo_dark.png') }}" alt="" class="img-thumbnail rounded mx-auto d-block"/>
+                            <p class="text-center mt-4 text-black">
+                                Ikuti event terdekat kami pada 2 Oktober 2024 dalam Mini Expo Golf Bareng di  Rancamaya
+                                Golf
+                                & Course Bogor
+                            </p>
+                            {{-- tombol lihat lokasinya --}}
+                            <div class="text-center mt-4">
+                                <a href="https://maps.app.goo.gl/pK727UZuQLkmnWsF8" target="_blank" class="cta2-btn">Lihat
+                                    Lokasi</a>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="cta-btn" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                 viewBox="0 24 150 28 " preserveAspectRatio="none">
                 <defs>
@@ -105,7 +137,7 @@
 
         <!-- Stats Section -->
         <section id="stats" class="stats section light-background">
-            <h2 class="text-center mb-4">Hitung Mundur Grand Launching</h2>
+            <h2 class="text-center mb-4 title-countdown">Hitung Mundur Grand Launching</h2>
             <div id="countdown-container">
                 <span id="days">00</span> hari <span id="hours">00</span> jam
                 <span id="minutes">00</span> menit
@@ -1076,7 +1108,8 @@
                 <div class="row gy-4">
                     <div class="col-lg-4">
                         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                            <i class="bi bi-geo-alt flex-shrink-0"></i>
+                            <a href="https://maps.app.goo.gl/6r5AHu7FqLMSiHxJA" target="_blank"><i
+                                    class="bi bi-geo-alt flex-shrink-0"></i></a>
                             <div>
                                 <h3>Alamat</h3>
                                 <p>
@@ -1088,7 +1121,9 @@
                         <!-- End Info Item -->
 
                         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                            <i class="bi bi-telephone flex-shrink-0"></i>
+                            <a href="tel:02127882100" target="_blank">
+                                <i class="bi bi-telephone flex-shrink-0"></i>
+                            </a>
                             <div>
                                 <h3>Telepon</h3>
                                 <p>(021) 27882100</p>
@@ -1097,7 +1132,9 @@
                         <!-- End Info Item -->
 
                         <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                            <i class="bi bi-envelope flex-shrink-0"></i>
+                            <a href="mailto:info@nawatara.com" target="_blank">
+                                <i class="bi bi-envelope flex-shrink-0"></i>
+                            </a>
                             <div>
                                 <h3>Email</h3>
                                 <p>info@nawatara.com</p>
@@ -1107,8 +1144,9 @@
                     </div>
 
                     <div class="col-lg-8">
-                        <form action="forms/contact.php" method="POST" class="php-email-form" data-aos="fade-up"
-                            data-aos-delay="200">
+                        <form action="{{ route('contact.send') }}" method="POST" class="php-email-form"
+                            data-aos="fade-up" data-aos-delay="200">
+                            @csrf
                             <div class="row gy-4">
                                 <div class="col-md-6">
                                     <input type="text" name="name" class="form-control"
@@ -1157,15 +1195,11 @@
                         <h1 class="sitename">Le easy</h1>
                     </a>
                     <div class="footer-contact pt-3">
-                        <p>Ruko Pasar Modern Grand Wisata Blok PR 1 No 3,</p>
                         <p>
-                            Lambangsari, Kec. Tambun Sel., Kabupaten Bekasi, Jawa Barat
-                            17510
+                            Semua kekayaan intelektual di situs web ini, termasuk nama perusahaan, merek dagang, logo,
+                            dan konten lainnya, adalah milik dari pemiliknya masing-masing. Penggunaan tanpa izin
+                            dilarang keras dan dapat mengakibatkan tindakan hukum.
                         </p>
-                        <p class="mt-3">
-                            <strong>Telepon:</strong> <span>(021) 27882100</span>
-                        </p>
-                        <p><strong>Email:</strong> <span>info@nawatara.com</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">
                         <a href="https://www.instagram.com/le_easy.id?igsh=MWdoNzh5bDY0M3Q1dg==" target="_blank"><i
@@ -1199,8 +1233,21 @@
                 <div class="col-lg-4 col-md-12 footer-newsletter">
                     <h4>Channel NawaTara Tech</h4>
                     <p>Berlangganan untuk mendapatkan informasi terbaru dari kami!</p>
-                    <a href="https://whatsapp.com/channel/0029VakhKB06BIEhjbHGTt2C" target="_blank"
-                        class="cta-btn">Langganan</a>
+                    <div>
+                        <a href="https://whatsapp.com/channel/0029VakhKB06BIEhjbHGTt2C" target="_blank"
+                            class="cta-btn">Langganan</a>
+                    </div>
+                    <br>
+                    <p class="mb-4"><strong>Alamat:</strong> <span>Ruko Pasar Modern Grand Wisata Blok PR 1 No 3,
+                            Lambangsari, Kec. Tambun Sel.,
+                            Kabupaten Bekasi,
+                            Jawa Barat
+                            17510</span>
+                    </p>
+                    <p class="mt-3">
+                        <strong>Telepon:</strong> <span>(021) 27882100</span>
+                    </p>
+                    <p><strong>Email:</strong> <span>info@nawatara.com</span></p>
                 </div>
             </div>
         </div>
@@ -1235,6 +1282,8 @@
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
@@ -1320,6 +1369,42 @@
         // Call the startCountdown function to begin the countdown
         startCountdown();
     </script>
+    <script>
+        // JavaScript to open modal 5 seconds after page load
+        window.onload = function() {
+            setTimeout(function() {
+                var myModal = new bootstrap.Modal(document.getElementById('myModal'));
+                myModal.show();
+            }, 5000); // 5000 milliseconds = 5 seconds
+        };
+    </script>
+    @if (session('success'))
+        <script>
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+            });
+        </script>
+    @endif
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: '{{ session('error') }}',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                allowOutsideClick: false,
+            });
+        </script>
+    @endif
 </body>
 
 </html>
