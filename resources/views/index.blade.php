@@ -113,7 +113,7 @@
             </div>
             <br />
             <div class="text-center mt-4">
-                <button type="button" class="cta-btn">Waiting List : {{ $countAntrian }}</a>
+                <a href="#" class="cta2-btn">Waiting List : {{ $countAntrian }} Perusahaan</a>
             </div>
             <div class="text-center mt-4">
                 <a href="#queue" class="cta-btn">Beri tahu saat Launching</a>

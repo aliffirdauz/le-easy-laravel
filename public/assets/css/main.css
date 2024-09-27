@@ -1775,3 +1775,16 @@ section,
 .cta-btn:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 25%);
 }
+
+.cta2-btn {
+  color: var(--contrast-color);
+  background: orange;
+  border: 0;
+  padding: 10px 30px;
+  transition: 0.4s;
+  border-radius: 50px;
+}
+
+.cta2-btn:hover {
+  background: color-mix(in srgb, orange, transparent 25%);
+}
